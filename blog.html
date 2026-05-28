@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마포 셔츠룸 블로그 - 서버 웜업의 진실</title>
+    <meta name="description" content="서버 웜업의 현장, 마포 셔츠룸이 말하는 진짜 웜업의 기술. 가식 없는 텐션, 압도적인 현장감. 010-6279-0862">
+    <meta name="keywords" content="마포 셔츠룸, 서버 웜업, 마포 웜업, 셔츠룸 블로그, 웜업 꿀팁, 마포 유흥 정보">
+    <meta name="bpaas-design-system" content="brutalist-avantgarde">
+    <meta name="bpaas-design-theme" content="kr-neon-void">
+    <meta property="og:title" content="마포 셔츠룸 블로그 - 서버 웜업의 진실">
+    <meta property="og:description" content="가장 거침없는 웜업의 세계. 010-6279-0862로 바로 확인하세요.">
+    <link rel="canonical" href="https://sf-t3-1779642675702-496.pages.dev/blog">
+    <style>
+        /* ---- RESET & BASE ---- */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #f5f5f5;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        a {
+            color: #ff3366;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all .2s ease;
+        }
+        a:hover {
+            border-bottom-color: #ff3366;
+            color: #ff6699;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        /* ---- TYPOGRAPHY ---- */
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            line-height: 1.1;
+            color: #ff3366;
+            text-shadow: 4px 4px 0 #1a1a1a, 8px 8px 0 rgba(255,51,102,0.3);
+        }
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            color: #f5f5f5;
+            border-left: 8px solid #ff3366;
+            padding-left: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        h3 {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #ff6699;
+        }
+        p {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            color: #cccccc;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            letter-spacing: 0.1em;
+            color: #ff3366;
+        }
+        /* ---- LAYOUT ---- */
+        .full-bleed {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .section {
+            padding: 4rem 0;
+            border-bottom: 3px solid #1a1a1a;
+        }
+        .section-gap {
+            padding: 6rem 0;
+        }
+        /* ---- HEADER & NAV ---- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #0a0a0a;
+            z-index: 1000;
+            border-bottom: 2px solid #ff3366;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #ff3366;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            border: none;
+        }
+        .header .logo:hover {
+            color: #ff6699;
+            border: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #f5f5f5;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 0.2rem;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            border-bottom-color: #ff3366;
+            color: #ff6699;
+        }
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+        .hamburger-menu span {
+            width: 30px;
+            height: 3px;
+            background: #ff3366;
+            border-radius: 2px;
+            transition: all .3s ease;
+        }
+        /* ---- HERO ---- */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 1.5rem 4rem;
+            background: radial-gradient(circle at 30% 20%, rgba(255,51,102,0.15), transparent 70%);
+        }
+        .hero h1 {
+            max-width: 900px;
+            margin: 0 auto 1rem;
+        }
+        .hero p {
+            font-size: 1.4rem;
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        .hero .btn {
+            display: inline-block;
+            background: #ff3366;
+            color: #0a0a0a;
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            padding: 1rem 3rem;
+            border: 3px solid #ff3366;
+            transition: all .3s ease;
+            letter-spacing: 0.1em;
+            border: none;
+        }
+        .hero .btn:hover {
+            background: transparent;
+            color: #ff3366;
+            border: 3px solid #ff3366;
+        }
+        /* ---- CARDS & BLOG ---- */
+        .card {
+            background: #111;
+            border: 2px solid #1a1a1a;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            transition: border-color .3s ease;
+            position: relative;
+        }
+        .card:hover {
+            border-color: #ff3366;
+        }
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+        }
+        .card .meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .card p {
+            margin-bottom: 1rem;
+        }
+        .card .read-more {
+            color: #ff3366;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid transparent;
+        }
+        .card .read-more:hover {
+            border-bottom-color: #ff3366;
+        }
+        /* ---- CTA ---- */
+        .cta-section {
+            background: #111;
+            border-top: 4px solid #ff3366;
+            border-bottom: 4px solid #ff3366;
+            text-align: center;
+            padding: 5rem 1.5rem;
+        }
+        .cta-section h2 {
+            border-left: none;
+            padding-left: 0;
+            margin-bottom: 0.5rem;
+        }
+        .cta-section .phone {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #ff3366;
+            letter-spacing: 0.05em;
+            display: block;
+            margin: 1.5rem 0;
+            text-shadow: 0 0 20px rgba(255,51,102,0.4);
+        }
+        /* ---- FOOTER ---- */
+        footer {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            color: #444;
+            font-size: 0.9rem;
+            border-top: 1px solid #1a1a1a;
+        }
+        footer a {
+            color: #666;
+        }
+        /* ---- RESPONSIVE 768 ---- */
+        @media (max-width: 768px) {
+            .header {
+                padding: 0.6rem 1.2rem;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #0a0a0a;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                padding: 1.5rem;
+                gap: 1.5rem;
+                border-bottom: 2px solid #ff3366;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .hamburger-menu {
+                display: flex;
+            }
+            .hero {
+                min-height: 60vh;
+                padding: 6rem 1rem 3rem;
+            }
+            .hero h1 {
+                font-size: clamp(2rem, 10vw, 3.5rem);
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+            .cta-section .phone {
+                font-size: 2.2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+                padding-left: 0.8rem;
+                border-left-width: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <a href="/" class="logo">마포셔츠룸</a>
+        <button class="hamburger-menu" aria-label="메뉴 열기" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('open');">
+            <span></span><span></span><span></span>
+        </button>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">홈</a></li>
+                <li><a href="/about">소개</a></li>
+                <li><a href="/blog" class="active">블로그</a></li>
+                <li><a href="/contact">문의</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero full-bleed">
+        <div class="container" style="text-align:center;">
+            <h1>서버 웜업의 진실</h1>
+            <p>가식은 버려라. 진짜 웜업은 마포에서 시작된다. 우리가 말하는 현장의 기술.</p>
+            <a href="tel:01062790862" class="btn">010-6279-0862</a>
+        </div>
+    </section>
+
+    <!-- BLOG CONTENT -->
+    <section class="section section-gap">
+        <div class="container">
+            <h2>블로그 • 마포 셔츠룸</h2>
+            <div class="card">
+                <div class="meta">2025.03.18 • 카테고리: 웜업 전략</div>
+                <h3>“웜업이 뭐냐? — 마포식 텐션의 모든 것”</h3>
+                <p>
+                    서버 웜업. 유흥업계에서 가장 남발되는 단어지만, 제대로 아는 놈은 손에 꼽는다. 
+                    마포 셔츠룸은 다르다. 우리는 텐션을 숫자로 계산하지 않는다. 
+                    현장의 공기, 고객의 눈빛, 손끝의 떨림까지 읽어내는 웜업이 진짜다. 
+                    거품 입은 인사말은 집어치워라. 우리는 압도적인 현장감으로 승부 본다.
+                </p>
+                <p>
+                    마포 셔츠룸의 웜업은 단계가 있다. 첫째, 입장과 동시에 고객의 에너지를 캐치한다. 
+                    둘째, 그 에너지에 맞춰 서버의 텐션을 즉각 조율한다. 셋째, 아무도 예상하지 못한 타이밍에 분위기를 폭발시킨다. 
+                    이게 바로 우리가 ‘서버 웜업의 끝판왕’이라 불리는 이유다.
+                </p>
+                <p>
+                    이 모든 건 한마디로 요약되지 않는다. 직접 겪어야 안다. 
+                    전화 한 통이면 모든 게 시작된다. <strong class="mono">010-6279-0862</strong>.
+                </p>
+                <a href="#" class="read-more">전체 글 보기 →</a>
+            </div>
+
+            <div class="card">
+                <div class="meta">2025.03.10 • 카테고리: 현장 기록</div>
+                <h3>“좋은 서버는 웜업부터 다르다”</h3>
+                <p>
+                    서버가 별로면 웜업이고 뭐고 없다. 마포 셔츠룸의 서버들은 기본이 다르다. 
+                    우리는 교육부터 다르게 시킨다. 이론은 없다. 오직 실전. 
+                    현장에서 100명의 고객을 상대하며 체득한 웜업 기술을 전수한다. 
+                    가식적인 미소? 그런 건 필요 없다. 진짜 텐션은 눈빛에서 나온다.
+                </p>
+                <p>
+                    궁금하다면? 직접 확인해라. 우리는 숨기지 않는다.  
+                    <a href="tel:01062790862" style="color:#ff3366;font-weight:700;">지금 전화하자.</a>
+                </p>
+                <a href="#" class="read-more">전체 글 보기 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section full-bleed">
+        <div class="container">
+            <h2>지금 바로 웜업의 정석을 경험하라</h2>
+            <p style="color:#aaa; font-size:1.3rem; max-width:700px; margin:0 auto;">상담은 30초면 끝난다. 고민할 시간에 전화해.</p>
+            <span class="phone">010-6279-0862</span>
+            <p style="color:#666; margin-top:1rem;">※ 전화 한 통으로 예약·문의 가능</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© 2025 마포 셔츠룸 | 거침없는 웜업, 압도적인 텐
+</body>
+</html>
